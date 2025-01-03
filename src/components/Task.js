@@ -1,10 +1,10 @@
-export default function Task({ task }) {
+export default function Task({ onDeleteTask, task }) {
   return (
     <li>
       <span style={task.completed ? { textDecoration: 'line-through' } : {}}>
         {task.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDeleteTask(task.id)}>❌</button>
     </li>
   );
 }
