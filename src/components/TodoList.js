@@ -1,11 +1,16 @@
 import Task from './Task';
 
-export default function TodoList({ onDeleteTask, tasks }) {
+export default function TodoList({ tasks, onDeleteTask, onToggleTask }) {
   return (
     <div className='list'>
       <ul>
         {tasks.map((task) => (
-          <Task onDeleteTask={onDeleteTask} task={task} key={task.id} />
+          <Task
+            task={task}
+            key={task.id}
+            onDeleteTask={onDeleteTask}
+            onToggleTask={onToggleTask}
+          />
         ))}
       </ul>
     </div>
