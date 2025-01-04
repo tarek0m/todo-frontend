@@ -25,6 +25,14 @@ function App() {
     );
   }
 
+  function handleClearList() {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete all tasks?'
+    );
+
+    if (confirmed) setTasks([]);
+  }
+
   return (
     <div className='app'>
       <Logo />
@@ -33,6 +41,7 @@ function App() {
         tasks={tasks}
         onDeleteTask={handleDeleteTask}
         onToggleTask={handleToggleTask}
+        onClearList={handleClearList}
       />
       <Stats tasks={tasks} />
     </div>
