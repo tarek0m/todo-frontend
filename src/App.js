@@ -3,26 +3,60 @@ import Logo from './components/Logo';
 import Form from './components/Form';
 import TodoList from './components/TodoList';
 import Stats from './components/Stats';
-import initialTasks from './tasks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState([]);
 
+  // GET
+  useEffect(() => {
+    fetch('http://localhost:8000/')
+      .then((response) => response.json())
+      .then((data) => setTasks(data))
+      .catch((error) => console.error('Error fetching tasks:', error));
+  }, []);
+
+  // POST
   function handleAddTasks(task) {
-    setTasks((tasks) => [...tasks, task]);
+    fetch('http://localhost:8000/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    })
+      .then((response) => response.json())
+      .then((data) => setTasks(data))
+      .catch((error) => console.error('Error fetching tasks:', error));
   }
 
-  function handleDeleteTask(id) {
-    setTasks((tasks) => tasks.filter((task) => task.id !== id));
-  }
-
+  //PUT
   function handleToggleTask(id) {
-    setTasks((tasks) =>
-      tasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    );
+    const task = tasks.find((task) => task.id === id);
+    fetch('http://localhost:8000', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id, completed: !task.completed }),
+    })
+      .then((response) => response.json())
+      .then((updatedTasks) => setTasks(updatedTasks))
+      .catch((error) => console.error('Error toggling task:', error));
+  }
+
+  // DELETE
+  function handleDeleteTask(id) {
+    fetch('http://localhost:8000', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((response) => response.json())
+      .then((updatedTasks) => setTasks(updatedTasks))
+      .catch((error) => console.error('Error deleting task:', error));
   }
 
   function handleClearList() {
