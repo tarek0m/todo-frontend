@@ -1,1 +1,6 @@
-node_modules
+# Frontend
+frontend/node_modules/
+frontend/build/
+
+# Backend
+# backend/tasks.json

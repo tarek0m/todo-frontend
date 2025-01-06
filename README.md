@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+## Project Structure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project is divided into two main parts:
 
-## Available Scripts
+### Frontend
 
-In the project directory, you can run:
+The frontend is a React application located in the `frontend` directory. It includes the following main components:
 
-### `npm start`
+- `App.js`: The main component that handles the state and renders other components.
+- `Form.js`: A component for adding new tasks.
+- `TodoList.js`: A component that displays the list of tasks.
+- `Task.js`: A component that represents a single task.
+- `Stats.js`: A component that displays statistics about the tasks.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The backend is a simple PHP API located in the `backend` directory. It includes the following files:
 
-### `npm test`
+- `index.php`: The main API file that handles CRUD operations for tasks.
+- `tasks.json`: A JSON file that stores the tasks.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Endpoints
 
-### `npm run build`
+The backend provides the following API endpoints:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `GET /`: Retrieves all tasks.
+- `POST /`: Adds a new task.
+- `PUT /`: Updates a task's completion status.
+- `DELETE /`: Deletes a task.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running the Project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the project, follow these steps:
 
-### `npm run eject`
+1. Navigate to the `frontend` directory and install the dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+cd frontend
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Start the frontend development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Navigate to the `backend` directory and start a PHP server:
 
-## Learn More
+```sh
+cd backend
+php -S localhost:8000
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
